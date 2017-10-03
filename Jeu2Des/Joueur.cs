@@ -52,13 +52,26 @@ namespace Jeu2Des
             _Score = 0;
        }
 
+        //Construit un joueur à partir de son nom et son score
+        public Joueur(string nom, int score)
+        {
+            this._Nom = nom;
+            this._Score = score;
+        }
+
+
+      
         /// <summary>
         /// Crée un nouveau joueur avec un nom par défaut : Joueur 1, Joueur 2, ...
         /// Le numero attribué est géré automatiquement 
         /// </summary>
         /// <remarks></remarks>
         public Joueur() : this("Joueur" + _Compteur)
-        { _Compteur ++; }
+        {
+            _Compteur ++;
+            _Score = 0;
+
+        }
         
 
         /// <summary>
