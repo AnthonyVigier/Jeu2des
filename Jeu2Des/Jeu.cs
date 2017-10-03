@@ -13,7 +13,7 @@ namespace Jeu2Des
     /// A chaque lancer, si le total des dés est égal à 7 ==> le joueur marque 10 points à son score
     /// Une fois la partie terminée le nom du joeur et son score sont enregistrés dans le classement 
     /// </summary>   
-    public class Jeu
+    public class Jeu 
     {
 
         private Joueur _Joueur;
@@ -30,9 +30,6 @@ namespace Jeu2Des
         private De[] _Des = new De[2];
 
 
-
-
-
         /// <summary>
         /// Représente le classement du joueur, le classement est null au début de la partie
         /// </summary>
@@ -43,24 +40,16 @@ namespace Jeu2Des
             get { return _Classement; }
         }
 
-
-        //Liste qui permet de stocker le nom et le score du joueur
-        public List<Joueur> ListeJoueurs = new List<Joueur>(); 
-        
-      
         /// <summary>
         /// Crée un jeu de 2 Dés avec un classement
         /// </summary> 
         public Jeu()
         {
-
             //A la création du jeu : les 2 dés sont crées 
             //On aurait pu créer les 2 Des juste au moment de jouer  
             _Des[0] = new De();
             _Des[1] = new De();
-
-
-
+            _Classement = new Classement();
         }
 
         /// <summary>
@@ -75,6 +64,9 @@ namespace Jeu2Des
 
             //On fait jouer le joueur en lui passant les 2 dés
             int resultat = _Joueur.Jouer(_Des);
+
+
+            Classement.AjouterEntree( nom, resultat);
 
         }
 
@@ -91,15 +83,15 @@ namespace Jeu2Des
             //Le joueur Joue et on récupère son score
             int resultat = _Joueur.Jouer(_Des);
 
+            Classement.AjouterEntree(_Joueur.Nom, resultat);
+
         }
 
-
-        public void Classer()
+       public void VoirClassement()
         {
-            ListeJoueurs.Add(Joueur.Nom, Joueur.Score);
-
-           
+            Classement.AfficherClassement();
         }
+
         
     }
 }

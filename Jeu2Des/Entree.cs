@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Jeu2Des
 {
-    public class Entree
+    public class Entree : IComparable<Entree>
     {
         //Propriétés
 
@@ -14,21 +14,21 @@ namespace Jeu2Des
         public string Nom
         {
             get { return _Nom;}
+            set { _Nom = value; }
         }
-
-
 
         private int _Score;
 
         public int Score
         {
             get { return _Score;}
+            set { _Score = value; }
         }
 
 
         //Constructeurs
 
-        public Entree(string nom, int score)
+        public Entree(int score, string nom)
         {
             this._Nom = nom;
             this._Score = score;
@@ -41,7 +41,32 @@ namespace Jeu2Des
             this._Score = 0;
         }
         //Méthodes
-        //Redéfinition
 
+
+
+
+        //Redéfinition
+        public override string ToString()
+        { 
+            return "Nom : " + Nom + "Score : " + Score ;
+        }
+
+        //public int CompareTo(object obj)
+        //{
+        //    Entree other = obj as Entree;
+        //    if(other != null)
+        //    {
+        //        return this.Score.CompareTo(other.Score);
+        //    }
+        //    else
+        //    {
+        //        throw new ArgumentException("L'objet n'est pas une entrée valide");
+        //    }
+        //}
+
+        public int CompareTo(Entree other)
+        {
+            return this.Score.CompareTo(other.Score);
+        }
     }
 }
