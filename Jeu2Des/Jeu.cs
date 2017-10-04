@@ -35,10 +35,10 @@ namespace Jeu2Des
         /// </summary>
         private Classement _Classement;
 
-        public Classement Classement
-        {
-            get { return _Classement; }
-        }
+        //public Classement Classement
+        //{
+        //    get { return _Classement; }
+        //}
 
         /// <summary>
         /// Crée un jeu de 2 Dés avec un classement
@@ -66,7 +66,7 @@ namespace Jeu2Des
             int resultat = _Joueur.Jouer(_Des);
 
 
-            Classement.AjouterEntree( nom, resultat);
+            _Classement.AjouterEntree(nom, resultat);
 
         }
 
@@ -83,15 +83,19 @@ namespace Jeu2Des
             //Le joueur Joue et on récupère son score
             int resultat = _Joueur.Jouer(_Des);
 
-            Classement.AjouterEntree(_Joueur.Nom, resultat);
+            _Classement.AjouterEntree(_Joueur.Nom, resultat);
 
         }
 
        public void VoirClassement()
         {
-            Classement.AfficherClassement();
+           _Classement.AfficherClassement();
+           _Classement.AfficherClassement(3);
         }
 
-        
+        public override string ToString()
+        {
+            return base.ToString() + _Joueur;
+        }
     }
 }

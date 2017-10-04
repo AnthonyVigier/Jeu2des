@@ -48,21 +48,10 @@ namespace Jeu2Des
         //Redéfinition
         public override string ToString()
         { 
-            return "Nom : " + Nom + "Score : " + Score ;
+            return "Nom : " + Nom + " Score : " + Score ;
         }
 
-        //public int CompareTo(object obj)
-        //{
-        //    Entree other = obj as Entree;
-        //    if(other != null)
-        //    {
-        //        return this.Score.CompareTo(other.Score);
-        //    }
-        //    else
-        //    {
-        //        throw new ArgumentException("L'objet n'est pas une entrée valide");
-        //    }
-        //}
+      
 
         public int CompareTo(Entree other)
         {

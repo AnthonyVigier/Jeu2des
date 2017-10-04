@@ -104,7 +104,7 @@ namespace Jeu2Des
         /// <remarks></remarks>
         public override string ToString()
         {
-            return base.ToString() + " " + Nom + ", score= " + Score;
+            return  Nom + ", score = " + Score;
         }
     }
 }

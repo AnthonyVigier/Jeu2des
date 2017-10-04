@@ -18,48 +18,65 @@ namespace Jeu2Des
 
         public Classement()
         {
-
-            JoueursEntres = new List<Entree>();
-            //this. _Entree = new Entree();
+            JoueursEntres = new List<Entree>();          
 
         }
 
 
-        public Classement(Entree entree)
-        {
-            JoueursEntres = new List<Entree>();
-            //this._Entree = entree;
-        }
+        //public Classement(Entree entree)
+        //{
+        //    JoueursEntres = new List<Entree>();           
+        //}
 
 
         //Méthodes
 
         public void AjouterEntree(string nom, int score)
         {
-            
             JoueursEntres.Add(new Entree(score, nom));
-
-
         }
 
      
-
         public void AfficherClassement()
         {
             JoueursEntres.Sort();
             JoueursEntres.Reverse();
+
             foreach (Entree joueurs in JoueursEntres)
             {
                 Console.WriteLine(joueurs);
             }
-
-           
         }
 
+       
+        public void AfficherClassement(int n)
+        {
+            int cpt = 0;
+
+            Console.WriteLine("\n***********************************Top 3**************************************");
+            Console.WriteLine();
+            JoueursEntres.Sort();
+            JoueursEntres.Reverse();
+          
+
+            foreach (Entree joueurs in JoueursEntres)
+            {
+                if (cpt == n)
+                {
+                    break;
+                }
+
+                Console.WriteLine(joueurs);
+                cpt++;
+            }
+        }
 
         //Redéfinition
+        public override string ToString()
+        {
+            return base.ToString() + JoueursEntres;
+        }
 
-     
 
     }
 }
