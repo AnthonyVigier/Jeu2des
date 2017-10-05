@@ -14,7 +14,7 @@ namespace TesteurSerial
         static void Main(string[] args)
         {
           
-            Jeu j1 = new Jeu();
+            Jeu j1 = new Jeu(1);
 
             j1.JouerPartie("Grooth");
             j1.JouerPartie("Peter Parker");

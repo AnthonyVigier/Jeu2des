@@ -18,10 +18,13 @@ namespace Jeu2Des
 
         private Joueur _Joueur;
 
+        private int _ChoixClassementSave;
+
         /// <summary>
         /// Représente le joueur courant (celui qui joue une partie)
         /// </summary>
-        /// <returns>Le joueur de la partie ou null si aucune partie n'est démarrée</returns>        
+        /// <returns>Le joueur de la partie ou null si aucune partie n'est démarrée</returns> 
+        /// 
         public Joueur Joueur
         {
             get { return _Joueur; }
@@ -43,13 +46,30 @@ namespace Jeu2Des
         /// <summary>
         /// Crée un jeu de 2 Dés avec un classement
         /// </summary> 
-        public Jeu()
+        public Jeu(int choix)
         {
             //A la création du jeu : les 2 dés sont crées 
             //On aurait pu créer les 2 Des juste au moment de jouer  
             _Des[0] = new De();
             _Des[1] = new De();
-            _Classement = new Classement();
+
+            if (choix == 1)
+            {
+                _Classement = new ClassementBinaire();
+            }
+
+            else if (choix == 2)
+            {
+                _Classement = new ClassementXML();
+            }
+
+            else if(choix == 3)
+            {
+                _Classement = new ClassementJSON();
+            }
+           
+
+
             _Classement.LoadClassement();
         }
 
@@ -99,9 +119,6 @@ namespace Jeu2Des
             _Classement.SaveClassement();
         }
 
-        public override string ToString()
-        {
-            return base.ToString() + _Joueur;
-        }
+        
     }
 }

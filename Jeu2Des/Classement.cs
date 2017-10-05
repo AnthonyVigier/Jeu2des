@@ -9,16 +9,16 @@ using System.Text;
 using System.Xml.Serialization;
 
 namespace Jeu2Des
-{
-    [DataContract]
-    public class Classement
+{   
+   
+   
+    public abstract class Classement
 
     {
         //Propriétés
         private List<Entree> _JoueursEntres;
 
-        [DataMember]
-        public List<Entree> Joueursentres
+        public List<Entree> JoueursEntres
             {
                 get { return _JoueursEntres; }
                 set { _JoueursEntres = value; }
@@ -26,7 +26,7 @@ namespace Jeu2Des
 
         //Constructeurs
 
-        public Classement()
+        protected Classement()
         {
             _JoueursEntres = new List<Entree>();          
         }
@@ -67,69 +67,12 @@ namespace Jeu2Des
             }
         }
 
-        public void SaveClassement()
-        {
-            //*********************Binaire****************************
-            //Stream fichier = File.Create("savClassement.txt");
-            //BinaryFormatter serializer = new BinaryFormatter();
-            //serializer.Serialize(fichier, JoueursEntres);
-            //fichier.Close();
-
-            //***********************XML******************************
-            //Stream fichier = File.Create("sav.xml");
-            //XmlSerializer serializer = new XmlSerializer(_JoueursEntres.GetType());            
-            //serializer.Serialize(fichier,_JoueursEntres);
-            //fichier.Close();
-
-            //**********************JSON*****************************
-            Stream fichier = File.Create("sav.json");
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(_JoueursEntres.GetType());
-            serializer.WriteObject(fichier,_JoueursEntres);
-            fichier.Close();
-        }
-
-
-        public void LoadClassement()
-        {
-
-            //*********************Binaire Load*******************************
-            //if (File.Exists("savClassement.txt"))
-            //   {
-            //       Stream fichierLoad = File.OpenRead("savClassement.txt");
-            //       BinaryFormatter serialLoad = new BinaryFormatter();
-            //       Object obj = serialLoad.Deserialize(fichierLoad);
-            //       _JoueursEntres = (List<Entree>)obj;
-            //       fichierLoad.Close();
-            //   }
-
-
-            //*******************XML Load************************************
-            //if (File.Exists("sav.xml"))
-            //{
-
-            //    Stream fichier = File.OpenRead("sav.xml");
-            //    XmlSerializer serializer = new XmlSerializer(typeof(List<Entree>));
-            //    Object obj = serializer.Deserialize(fichier);
-            //    _JoueursEntres = (List<Entree>)obj;
-            //    fichier.Close();
-            //}
-
-            if (File.Exists("sav.json"))
-            {
-                Stream fichier = File.OpenRead("sav.json");
-                DataContractJsonSerializer serializer = 
-                new DataContractJsonSerializer(typeof(List<Entree>));
-                Joueursentres = (List<Entree>)serializer.ReadObject(fichier);
-
-                fichier.Close();
-            }
-
-        }
+        public abstract void SaveClassement();
+        
+        public abstract void LoadClassement();
+        
         //Redéfinition
-        public override string ToString()
-        {
-            return base.ToString() + _JoueursEntres;
-        }
+       
 
 
     }
