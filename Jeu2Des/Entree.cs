@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Jeu2Des
 {
+    [Serializable]
     public class Entree : IComparable<Entree>
     {
         //Propriétés
@@ -42,9 +43,6 @@ namespace Jeu2Des
         }
         //Méthodes
 
-
-
-
         //Redéfinition
         public override string ToString()
         { 
@@ -52,7 +50,6 @@ namespace Jeu2Des
         }
 
       
-
         public int CompareTo(Entree other)
         {
             return this.Score.CompareTo(other.Score);
