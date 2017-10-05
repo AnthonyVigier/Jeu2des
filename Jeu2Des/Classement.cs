@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Xml.Serialization;
 
 namespace Jeu2Des
 {
-    [Serializable]
+    [DataContract]
     public class Classement
 
     {
         //Propriétés
-
-
         private List<Entree> _JoueursEntres;
 
+        [DataMember]
         public List<Entree> Joueursentres
             {
                 get { return _JoueursEntres; }
@@ -53,8 +54,6 @@ namespace Jeu2Des
        
         public void AfficherClassement(int n)
         {
-            int cpt = 0;
-
             Console.WriteLine("\n***********************************Top 3**************************************");
             Console.WriteLine();
             _JoueursEntres.Sort();
@@ -70,9 +69,6 @@ namespace Jeu2Des
 
         public void SaveClassement()
         {
-            //sauve le classement
-
-
             //*********************Binaire****************************
             //Stream fichier = File.Create("savClassement.txt");
             //BinaryFormatter serializer = new BinaryFormatter();
@@ -80,9 +76,15 @@ namespace Jeu2Des
             //fichier.Close();
 
             //***********************XML******************************
-            Stream fichier = File.Create("sav.xml");
-            XmlSerializer serializer = new XmlSerializer(_JoueursEntres.GetType());            
-            serializer.Serialize(fichier,_JoueursEntres);
+            //Stream fichier = File.Create("sav.xml");
+            //XmlSerializer serializer = new XmlSerializer(_JoueursEntres.GetType());            
+            //serializer.Serialize(fichier,_JoueursEntres);
+            //fichier.Close();
+
+            //**********************JSON*****************************
+            Stream fichier = File.Create("sav.json");
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(_JoueursEntres.GetType());
+            serializer.WriteObject(fichier,_JoueursEntres);
             fichier.Close();
         }
 
@@ -102,14 +104,23 @@ namespace Jeu2Des
 
 
             //*******************XML Load************************************
-            if (File.Exists("sav.xml"))
-            {
-                
-                Stream fichier = File.OpenRead("sav.xml");
-                XmlSerializer serializer = new XmlSerializer(typeof(List<Entree>));
-                Object obj = serializer.Deserialize(fichier);
+            //if (File.Exists("sav.xml"))
+            //{
 
-                _JoueursEntres = (List<Entree>)obj;
+            //    Stream fichier = File.OpenRead("sav.xml");
+            //    XmlSerializer serializer = new XmlSerializer(typeof(List<Entree>));
+            //    Object obj = serializer.Deserialize(fichier);
+            //    _JoueursEntres = (List<Entree>)obj;
+            //    fichier.Close();
+            //}
+
+            if (File.Exists("sav.json"))
+            {
+                Stream fichier = File.OpenRead("sav.json");
+                DataContractJsonSerializer serializer = 
+                new DataContractJsonSerializer(typeof(List<Entree>));
+                Joueursentres = (List<Entree>)serializer.ReadObject(fichier);
+
                 fichier.Close();
             }
 

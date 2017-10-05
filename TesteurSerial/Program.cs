@@ -10,11 +10,7 @@ using System.Threading.Tasks;
 namespace TesteurSerial
 {
     class Program
-    {
-       
-        
-
-
+    { 
         static void Main(string[] args)
         {
           

@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Jeu2Des
 {
-    [Serializable]
+    [DataContract]
     public class Entree : IComparable<Entree>
     {
         //Propriétés
 
         private string _Nom;
 
+        [DataMember]
         public string Nom
         {
             get { return _Nom;}
@@ -20,6 +22,7 @@ namespace Jeu2Des
 
         private int _Score;
 
+        [DataMember]
         public int Score
         {
             get { return _Score;}
