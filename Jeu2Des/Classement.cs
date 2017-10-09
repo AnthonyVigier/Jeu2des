@@ -11,7 +11,6 @@ using System.Xml.Serialization;
 namespace Jeu2Des
 {   
    
-   
     public abstract class Classement
 
     {

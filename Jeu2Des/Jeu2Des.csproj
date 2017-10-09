@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Classement.cs" />
     <Compile Include="ClassementBinaire.cs" />
+    <Compile Include="ClassementFactory.cs" />
     <Compile Include="ClassementJSON.cs" />
     <Compile Include="ClassementXML.cs" />
     <Compile Include="De.cs" />

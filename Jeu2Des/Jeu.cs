@@ -53,23 +53,9 @@ namespace Jeu2Des
             _Des[0] = new De();
             _Des[1] = new De();
 
-            if (choix == 1)
-            {
-                _Classement = new ClassementBinaire();
-            }
-
-            else if (choix == 2)
-            {
-                _Classement = new ClassementXML();
-            }
-
-            else if(choix == 3)
-            {
-                _Classement = new ClassementJSON();
-            }
-           
 
 
+            _Classement = ClassementFactory.CreateClassement(choix);
             _Classement.LoadClassement();
         }
 
