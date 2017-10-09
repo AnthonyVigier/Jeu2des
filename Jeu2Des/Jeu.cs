@@ -38,11 +38,7 @@ namespace Jeu2Des
         /// </summary>
         private Classement _Classement;
 
-        //public Classement Classement
-        //{
-        //    get { return _Classement; }
-        //}
-
+    
         /// <summary>
         /// Crée un jeu de 2 Dés avec un classement
         /// </summary> 
@@ -52,8 +48,6 @@ namespace Jeu2Des
             //On aurait pu créer les 2 Des juste au moment de jouer  
             _Des[0] = new De();
             _Des[1] = new De();
-
-
 
             _Classement = ClassementFactory.CreateClassement(choix);
             _Classement.LoadClassement();
@@ -97,7 +91,6 @@ namespace Jeu2Des
        public void VoirClassement()
        {
            _Classement.AfficherClassement();
-          //_Classement.AfficherClassement(3);
        }
 
         public void Quitter()

@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace Jeu2Des
 {   
-   
+   [Serializable]
     public abstract class Classement
 
     {

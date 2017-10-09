@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace TesteurSerial
 {
     class Program
-    { 
+    {
         static void Main(string[] args)
         {
           
-            Jeu j1 = new Jeu(1);
+            Jeu j1 = new Jeu(0);
 
             j1.JouerPartie("Grooth");
             j1.JouerPartie("Peter Parker");

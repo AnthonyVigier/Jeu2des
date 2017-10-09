@@ -6,6 +6,7 @@ using System.Text;
 
 namespace Jeu2Des
 {
+    [Serializable]
     [DataContract]
     public class Entree : IComparable<Entree>
     {
