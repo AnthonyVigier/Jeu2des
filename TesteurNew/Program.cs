@@ -1,21 +1,17 @@
-﻿
-using Jeu2Des;
+﻿using Jeu2Des;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TesteurSerial
+namespace TesteurNew
 {
     class Program
     {
         static void Main(string[] args)
         {
-          
-            Jeu j1 = new Jeu(2);
+            Jeu j1 = new Jeu(3);
 
             j1.JouerPartie("Grooth");
             j1.JouerPartie("Peter Parker");
@@ -33,8 +29,8 @@ namespace TesteurSerial
             j1.VoirClassement();
 
             j1.Quitter();
-
             Console.ReadKey();
+
         }
     }
 }

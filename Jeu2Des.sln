@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jeu2Des", "Jeu2Des\Jeu2Des.csproj", "{2337A14D-1EDF-46FF-808B-41F2F9DC27BE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testeur", "Testeur\Testeur.csproj", "{D27EE305-238B-4593-BAA0-4BE3873B0D72}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteurSerial", "TesteurSerial\TesteurSerial.csproj", "{7B8AD4D2-920B-40E8-BAF4-8FE61C796CD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteurNew", "TesteurNew\TesteurNew.csproj", "{295FAE98-07DC-48BE-9A77-9F23CCEA1702}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,14 @@ Global
 		{7B8AD4D2-920B-40E8-BAF4-8FE61C796CD3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7B8AD4D2-920B-40E8-BAF4-8FE61C796CD3}.Release|x86.ActiveCfg = Release|Any CPU
 		{7B8AD4D2-920B-40E8-BAF4-8FE61C796CD3}.Release|x86.Build.0 = Release|Any CPU
+		{295FAE98-07DC-48BE-9A77-9F23CCEA1702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{295FAE98-07DC-48BE-9A77-9F23CCEA1702}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{295FAE98-07DC-48BE-9A77-9F23CCEA1702}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{295FAE98-07DC-48BE-9A77-9F23CCEA1702}.Debug|x86.Build.0 = Debug|Any CPU
+		{295FAE98-07DC-48BE-9A77-9F23CCEA1702}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{295FAE98-07DC-48BE-9A77-9F23CCEA1702}.Release|Any CPU.Build.0 = Release|Any CPU
+		{295FAE98-07DC-48BE-9A77-9F23CCEA1702}.Release|x86.ActiveCfg = Release|Any CPU
+		{295FAE98-07DC-48BE-9A77-9F23CCEA1702}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
