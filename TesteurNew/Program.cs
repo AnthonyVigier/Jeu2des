@@ -11,7 +11,8 @@ namespace TesteurNew
     {
         static void Main(string[] args)
         {
-            Jeu j1 = new Jeu(3);
+
+            Jeu j1 = new Jeu();
 
             j1.JouerPartie("Grooth");
             j1.JouerPartie("Peter Parker");
@@ -30,7 +31,6 @@ namespace TesteurNew
 
             j1.Quitter();
             Console.ReadKey();
-
         }
     }
 }

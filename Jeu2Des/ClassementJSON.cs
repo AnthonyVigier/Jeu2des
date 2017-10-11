@@ -8,36 +8,38 @@ using System.Text;
 
 namespace Jeu2Des
 {
-    public class ClassementJSON : Classement
+    public class ClassementJSON : IPersistance
     {
         //constructeurs
-        public ClassementJSON() : base(){}
-
-        
+  
         //méthodes
 
-     
         //méthodes redéfinies
 
-        public override void SaveClassement()
+        public void SaveClassement(Object objetSauve)
         {
+            
             Stream fichier = File.Create("sav.json");
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(JoueursEntres.GetType());
-            serializer.WriteObject(fichier, JoueursEntres);
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(objetSauve.GetType());
+            serializer.WriteObject(fichier,objetSauve);
             fichier.Close();
         }
 
 
-        public override void LoadClassement()
+        public Object LoadClassement(Type type)
         {
+            Object obj = null;
             if (File.Exists("sav.json"))
             {
-                Stream fichier = File.OpenRead("sav.json");
+               
+                FileStream fichier = File.OpenRead("sav.json");
                 DataContractJsonSerializer serializer =
-                new DataContractJsonSerializer(typeof(List<Entree>));
-                JoueursEntres = (List<Entree>)serializer.ReadObject(fichier);
+                new DataContractJsonSerializer(type);
+                obj = (Classement)serializer.ReadObject(fichier);
                 fichier.Close();
             }
+
+            return obj;
         }
 
 

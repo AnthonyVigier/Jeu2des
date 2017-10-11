@@ -7,25 +7,22 @@ namespace Jeu2Des
 {
     public static class ClassementFactory
     {
-        public static Classement CreateClassement(int choix)
+        public static IPersistance CreerPersistance(TypePersistance type)
         {
 
-            if (choix == 1)
+            if (type == TypePersistance.Binaire)
             {
                 return new ClassementBinaire();
             }
 
-            else if (choix == 2)
+            if (type == TypePersistance.Xml)
             {
                 return new ClassementXML();
             }
-
-            else 
-            {
-                return  new ClassementJSON();
-            }
-
+                return new ClassementJSON();
             
+
+
         }
     }
 }

@@ -8,35 +8,38 @@ using System.Xml.Serialization;
 namespace Jeu2Des
 {
     [Serializable]
-    public class ClassementXML : Classement
+    public class ClassementXML : IPersistance
     {
         //Properties
         //constructeurs
 
-        public ClassementXML() : base(){}
+     
         //méthodes
 
       
         //méthodes redéfinies 
 
-        public override void SaveClassement()
+        public  void SaveClassement(Object objetsauve)
         {
+
             Stream fichier = File.Create("sav.xml");
-            XmlSerializer serializer = new XmlSerializer(JoueursEntres.GetType());
-            serializer.Serialize(fichier, JoueursEntres);
+            XmlSerializer serializer = new XmlSerializer(objetsauve.GetType());
+            serializer.Serialize(fichier,objetsauve);
             fichier.Close();
         }
 
-        public override void LoadClassement()
+        public Object LoadClassement(Type type)
         {
+            Object obj = null;
             if (File.Exists("sav.xml"))
             {
                 Stream fichier = File.OpenRead("sav.xml");
-                XmlSerializer serializer = new XmlSerializer(typeof(List<Entree>));
-                Object obj = serializer.Deserialize(fichier);
-                JoueursEntres = (List<Entree>)obj;
+                XmlSerializer serializer = new XmlSerializer(type);
+                obj = serializer.Deserialize(fichier);
                 fichier.Close();
             }
+            return obj;
+
         }
     }
 }

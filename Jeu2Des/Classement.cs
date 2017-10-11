@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 namespace Jeu2Des
 {   
    [Serializable]
-    public abstract class Classement
+    public class Classement
 
     {
         //Propriétés
@@ -25,7 +25,7 @@ namespace Jeu2Des
 
         //Constructeurs
 
-        protected Classement()
+        public Classement()
         {
             _JoueursEntres = new List<Entree>();          
         }
@@ -66,10 +66,6 @@ namespace Jeu2Des
             }
         }
 
-        public abstract void SaveClassement();
-        
-        public abstract void LoadClassement();
-        
         //Redéfinition
        
 

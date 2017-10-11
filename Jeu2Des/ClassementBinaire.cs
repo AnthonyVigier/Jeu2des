@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace Jeu2Des
 {
    [Serializable]
-    public class ClassementBinaire : Classement
+    public class ClassementBinaire : IPersistance
     {
         //Properties
         //constructeurs
@@ -21,24 +21,29 @@ namespace Jeu2Des
         //méthodes
         //méthodes redéfinies
 
-        public override void SaveClassement()
+       
+        public void SaveClassement(Object objetsauve)
         {
             Stream fichier = File.Create("savClassement.txt");
             BinaryFormatter serializer = new BinaryFormatter();
-            serializer.Serialize(fichier, JoueursEntres);
+            serializer.Serialize(fichier, objetsauve);
             fichier.Close();
         }
 
-        public override void LoadClassement()
+        public Object LoadClassement(Type type)
         {
+
+            Object obj = null;
             if (File.Exists("savClassement.txt"))
             {
                 Stream fichierLoad = File.OpenRead("savClassement.txt");
                 BinaryFormatter serialLoad = new BinaryFormatter();
-                Object obj = serialLoad.Deserialize(fichierLoad);
-                JoueursEntres = (List<Entree>)obj;
+                obj = serialLoad.Deserialize(fichierLoad);
                 fichierLoad.Close();
             }
+
+            return obj;
+            
         }
     }
 }

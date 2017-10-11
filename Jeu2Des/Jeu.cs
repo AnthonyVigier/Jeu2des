@@ -18,7 +18,12 @@ namespace Jeu2Des
 
         private Joueur _Joueur;
 
-        private int _ChoixClassementSave;
+        private IPersistance _Persistance;
+
+        public IPersistance Persistance
+        {
+            set { _Persistance = value; }
+        }
 
         /// <summary>
         /// Représente le joueur courant (celui qui joue une partie)
@@ -37,20 +42,38 @@ namespace Jeu2Des
         /// Représente le classement du joueur, le classement est null au début de la partie
         /// </summary>
         private Classement _Classement;
+        public Classement Classement
+        {
+            get { return _Classement; }
+            set { _Classement = value; }
+        }
 
     
         /// <summary>
         /// Crée un jeu de 2 Dés avec un classement
         /// </summary> 
-        public Jeu(int choix)
+        public Jeu(TypePersistance type)
         {
             //A la création du jeu : les 2 dés sont crées 
             //On aurait pu créer les 2 Des juste au moment de jouer  
             _Des[0] = new De();
             _Des[1] = new De();
 
-            _Classement = ClassementFactory.CreateClassement(choix);
-            _Classement.LoadClassement();
+            _Persistance = ClassementFactory.CreerPersistance(type);
+
+
+            _Classement = new Classement();
+            var recup = (Classement)_Persistance.LoadClassement(typeof(Classement));
+
+            if(recup != null)
+            {
+                _Classement = recup;
+            }
+            
+
+         
+            
+            
         }
 
         /// <summary>
@@ -95,7 +118,7 @@ namespace Jeu2Des
 
         public void Quitter()
         {
-            _Classement.SaveClassement();
+            _Persistance.SaveClassement(Classement);
         }
 
         
